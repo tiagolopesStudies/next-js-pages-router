@@ -27,6 +27,19 @@
       "react": "recommended"
     }
   },
+  "javascript": {
+    "formatter": {
+      "enabled": true,
+      "indentStyle": "space",
+      "indentWidth": 2,
+      "jsxQuoteStyle": "double",
+      "quoteStyle": "single",
+      "lineEnding": "lf",
+      "lineWidth": 90,
+      "semicolons": "asNeeded",
+      "trailingCommas": "none"
+    }
+  },
   "assist": {
     "actions": {
       "source": {
