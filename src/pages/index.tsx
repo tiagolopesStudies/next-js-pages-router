@@ -1,5 +1,3 @@
-import { Header } from '@/components/header'
-
 export default function Home() {
-  return <Header />
+  return <h1>Home Page</h1>
 }
