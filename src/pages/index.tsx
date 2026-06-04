@@ -1,3 +1,9 @@
-export default function Home() {
-  return <h1>Home Page</h1>
+import { HeroSection } from '@/components/base/hero-section'
+
+export default function HomePage() {
+  return (
+    <article className="flex flex-col">
+      <HeroSection />
+    </article>
+  )
 }
