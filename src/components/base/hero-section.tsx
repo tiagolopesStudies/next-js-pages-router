@@ -45,10 +45,8 @@ export function HeroSection() {
 
         <div className="relative h-80 hidden md:h-full order-first md:order-last items-center justify-center md:flex">
           <Image
-            unoptimized
+            fill
             src="/hero-section.png"
-            width={200}
-            height={400}
             alt="Ilustração com ícones de tag, sacola e loja"
             className="h-full w-auto object-contain"
             draggable="false"
