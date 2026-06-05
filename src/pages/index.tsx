@@ -1,3 +1,4 @@
+import { CustomerStorySection } from '@/components/base/customer-story-section'
 import { FeatureSection } from '@/components/base/feature-section'
 import { HeroSection } from '@/components/base/hero-section'
 import { SupportSection } from '@/components/base/support-section'
@@ -8,6 +9,7 @@ export default function HomePage() {
       <HeroSection />
       <FeatureSection />
       <SupportSection />
+      <CustomerStorySection />
     </article>
   )
 }

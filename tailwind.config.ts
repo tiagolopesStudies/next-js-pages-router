@@ -46,7 +46,7 @@ export default {
         sm: 'calc(0.5rem - 4px)'
       },
       fontFamily: {
-        sans: ['PT Sans Caption', 'sans-serif'],
+        sans: ['var(--pt-sans-caption)', 'sans-serif'],
         inter: ['Inter', 'sans-serif']
       },
       fontSize: {
