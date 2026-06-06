@@ -12,12 +12,16 @@ interface LayoutProps {
   children: React.ReactNode
 }
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--inter'
+})
 
 export function Layout({ children }: LayoutProps) {
   return (
     <div
-      className={`${inter.className} ${ptSansCaption.variable} relative flex flex-col min-h-screen bg-gray-700`}
+      className={`${inter.variable} ${ptSansCaption.variable} font-inter relative flex flex-col min-h-screen bg-gray-700`}
     >
       <Header />
       <main className="flex-1 flex flex-col mt-10 mb-12">{children}</main>
