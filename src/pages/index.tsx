@@ -1,7 +1,8 @@
-import { CustomerStorySection } from '@/components/base/customer-story-section'
-import { FeatureSection } from '@/components/base/feature-section'
-import { HeroSection } from '@/components/base/hero-section'
-import { SupportSection } from '@/components/base/support-section'
+import { CallToAction } from './_components/call-to-action'
+import { CustomerStorySection } from './_components/customer-story-section'
+import { FeatureSection } from './_components/feature-section'
+import { HeroSection } from './_components/hero-section'
+import { SupportSection } from './_components/support-section'
 
 export default function HomePage() {
   return (
@@ -10,6 +11,7 @@ export default function HomePage() {
       <FeatureSection />
       <SupportSection />
       <CustomerStorySection />
+      <CallToAction />
     </article>
   )
 }
