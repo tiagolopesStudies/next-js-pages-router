@@ -16,14 +16,14 @@ export function HeroSection() {
             <div>
               <div className="flex items-center gap-2">
                 <ClockIcon className="text-cyan-100 size-4" />
-                <span className="text-gray-200">
+                <span className="text-gray-200 text-body-md">
                   Crie o seu site em menos de 5 minutos
                 </span>
               </div>
 
               <div className="flex items-center gap-2">
                 <StoreIcon className="text-cyan-100 size-4" />
-                <span className="text-gray-200">
+                <span className="text-gray-200 text-body-md">
                   Acompanhe e otimize o seu negócio online
                 </span>
               </div>
