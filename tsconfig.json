@@ -12,9 +12,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
+    "baseUrl": ".",
     "incremental": true,
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["src/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     }
   },
