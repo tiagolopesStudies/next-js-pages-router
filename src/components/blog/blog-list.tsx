@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import { PostCard } from './post-card'
 import { Search } from './search'
 
 export function BlogList() {
@@ -26,6 +27,8 @@ export function BlogList() {
           <Search />
         </div>
       </header>
+
+      <PostCard />
     </div>
   )
 }
