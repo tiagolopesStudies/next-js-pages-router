@@ -1,6 +1,10 @@
+import { allPosts } from 'contentlayer/generated'
 import { useRouter } from 'next/router'
 import { PostCard } from './post-card'
+import { PostCardGrid } from './post-card-grid'
 import { Search } from './search'
+
+const posts = allPosts
 
 export function BlogList() {
   const router = useRouter()
@@ -12,7 +16,7 @@ export function BlogList() {
 
   return (
     <div className="flex flex-col py-24 flex-grow h-full">
-      <header>
+      <header className="pb-14">
         <div className="container space-y-6 flex flex-col items-start justify-between md:flex-row md:items-end">
           <div className="flex flex-col gap-4">
             <span className="text-body-tag text-cyan-100 w-fit rounded-md text-center md:text-left py-2 px-4 bg-cyan-300 uppercase">
@@ -28,14 +32,22 @@ export function BlogList() {
         </div>
       </header>
 
-      <PostCard
-        slug=""
-        title="Transformando seu negócio em uma loja virtual"
-        description="Se você está buscando uma maneira simples e eficáz de vender o seu peixe, esse post é para você, leia ele agora ou então..."
-        date="20/12/24"
-        imageUrl="/primeiro-post.png"
-        author={{ name: 'Aspen Dokidis', avatarUrl: '/customer-02.png' }}
-      />
+      <PostCardGrid>
+        {posts.map((post) => (
+          <PostCard
+            key={post._id}
+            slug={post.slug}
+            title={post.title}
+            description={post.description}
+            date={post.date}
+            imageUrl={post.image}
+            author={{
+              name: post.author.name,
+              avatarUrl: post.author.avatar
+            }}
+          />
+        ))}
+      </PostCardGrid>
     </div>
   )
 }
