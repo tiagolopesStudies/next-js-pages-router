@@ -11,7 +11,7 @@ export const Search = () => {
   const handleSearch = useCallback(
     (event: React.SubmitEvent<HTMLFormElement>) => {
       event.preventDefault()
-      if (query.trim()) {
+      if (query.trim() !== '') {
         router.push(`/blog?q=${encodeURIComponent(query.trim())}`)
       }
     },
@@ -19,7 +19,7 @@ export const Search = () => {
   )
 
   function handleQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const newQuery = event.target.value.trim()
+    const newQuery = event.target.value
     router.push(`/blog?q=${encodeURIComponent(newQuery)}`, undefined, {
       shallow: true,
       scroll: false
