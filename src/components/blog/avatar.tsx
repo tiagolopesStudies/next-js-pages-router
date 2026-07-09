@@ -1,4 +1,5 @@
 import Image, { type ImageProps } from 'next/image'
+import { cn } from '@/lib/utils'
 
 function AvatarContainer({ children }: { children: React.ReactNode }) {
   return <div className="flex items-center gap-3">{children}</div>
@@ -12,8 +13,35 @@ function AvatarDescription({ children }: { children: React.ReactNode }) {
   return <div className="text-gray-300 text-body-xs">{children}</div>
 }
 
-function AvatarImage({ src, alt, width = 40, height = 40, ...props }: ImageProps) {
-  return <Image src={src} alt={alt} width={width} height={height} {...props} />
+type AvatarSize = 'xs' | 'sm'
+
+type AvatarImageProps = Omit<ImageProps, 'height' | 'width'> & {
+  size?: AvatarSize
+}
+
+const avatarSize: Record<AvatarSize, string> = {
+  xs: 'size-5',
+  sm: 'size-9'
+}
+
+function AvatarImage({ src, alt, size = 'xs', className, ...props }: AvatarImageProps) {
+  return (
+    <div
+      className={cn(
+        'relative overflow-hidden rounded-full border-blue-200 border-[1px]',
+        avatarSize[size]
+      )}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        draggable="false"
+        className={cn('object-cover', className)}
+        {...props}
+      />
+    </div>
+  )
 }
 
 function AvatarTitle({ children }: { children: React.ReactNode }) {

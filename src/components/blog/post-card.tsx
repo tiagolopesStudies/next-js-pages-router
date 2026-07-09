@@ -47,7 +47,7 @@ export function PostCard({
             height={144}
             draggable="false"
             unoptimized
-            className="w-full h-40 object-cover object-center rounded-t-[8px]"
+            className="w-full h-40 object-cover object-center rounded-[8px]"
           />
         </div>
 
