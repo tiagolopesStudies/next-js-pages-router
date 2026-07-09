@@ -28,7 +28,7 @@ function AvatarImage({ src, alt, size = 'xs', className, ...props }: AvatarImage
   return (
     <div
       className={cn(
-        'relative overflow-hidden rounded-full border-blue-200 border-[1px]',
+        'relative overflow-hidden rounded-full border border-blue-200',
         avatarSize[size]
       )}
     >
