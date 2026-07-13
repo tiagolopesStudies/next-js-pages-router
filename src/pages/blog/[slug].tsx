@@ -11,11 +11,18 @@ import {
   BreadcrumbList,
   BreadcrumbSeparator
 } from '@/components/ui/breadcrumb'
+import { Button } from '@/components/ui/button'
+import { useShare } from '@/hooks/use-share'
 
 export default function PostPage() {
   const router = useRouter()
   const slug = router.query.slug as string
   const post = allPosts.find((post) => post.slug === slug)
+  const { shareButtons } = useShare({
+    url: slug,
+    title: post?.title,
+    text: post?.description
+  })
 
   if (!post) {
     return <div>Post não encontrado</div>
@@ -76,6 +83,26 @@ export default function PostPage() {
               <Markdown content={post.body.raw} />
             </div>
           </article>
+
+          <aside className="space-y-6">
+            <div className="rounded-lg bg-gray-400 p-4 md:p-6">
+              <h2 className="mb-4 text-heading-xs">Compartilhar</h2>
+
+              <div className="space-y-3">
+                {shareButtons.map((shareButton) => (
+                  <Button
+                    key={shareButton.name}
+                    type="button"
+                    variant="outline"
+                    onClick={() => shareButton.action()}
+                  >
+                    {shareButton.icon}
+                    {shareButton.name}
+                  </Button>
+                ))}
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
     </main>
