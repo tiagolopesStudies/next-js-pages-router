@@ -1,11 +1,16 @@
 import { FacebookIcon, LinkedinIcon, SlackIcon, TwitterIcon } from 'lucide-react'
 
 export interface ShareConfig {
-  title?: string
   url: string
+  title?: string
 }
 
-export type SocialProviderType = 'linkedin' | 'facebook' | 'slack' | 'twitter'
+export type SocialProviderType =
+  | 'linkedin'
+  | 'facebook'
+  | 'slack'
+  | 'twitter'
+  | 'clipboard'
 export type SocialProviderData = {
   name: string
   icon: React.ReactNode
@@ -36,5 +41,10 @@ export const SOCIAL_PROVIDERS: Record<SocialProviderType, SocialProviderData> = 
     icon: <TwitterIcon className="size-4" />,
     shareUrl: ({ url, title }: ShareConfig) =>
       `https://x.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title ?? '')}`
+  },
+  clipboard: {
+    name: 'clipboard',
+    icon: '',
+    shareUrl: () => ''
   }
 }

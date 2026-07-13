@@ -4,12 +4,16 @@ import {
   SOCIAL_PROVIDERS,
   type SocialProviderType
 } from '@/utils/social-providers'
+import { useClipboard } from './use-clipboard'
 
 interface UseShareProps extends ShareConfig {
   text?: string
+  clipboardTimeout?: number
 }
 
-export function useShare({ url, title, text }: UseShareProps) {
+export function useShare({ url, title, text, clipboardTimeout }: UseShareProps) {
+  const { isCopied, handleCopy } = useClipboard({ timeout: clipboardTimeout })
+
   const shareConfig = useMemo(
     () => ({
       url,
@@ -21,6 +25,10 @@ export function useShare({ url, title, text }: UseShareProps) {
 
   const share = useCallback(
     (provider: SocialProviderType) => {
+      if (provider === 'clipboard') {
+        return handleCopy(url)
+      }
+
       const providerConfig = SOCIAL_PROVIDERS[provider]
 
       const shareUrl = providerConfig.shareUrl(shareConfig)
@@ -32,19 +40,26 @@ export function useShare({ url, title, text }: UseShareProps) {
 
       return shareWindow !== null
     },
-    [shareConfig]
+    [shareConfig, handleCopy, url]
   )
 
   const shareButtons = useMemo(
     () => [
-      ...Object.entries(SOCIAL_PROVIDERS).map(([key, provider]) => ({
-        provider: key,
-        name: provider.name,
-        icon: provider.icon,
-        action: () => share(key as SocialProviderType)
-      }))
+      ...Object.entries(SOCIAL_PROVIDERS).map(([key, provider]) => {
+        let providerName: string | undefined
+        if (key === 'clipboard') {
+          providerName = isCopied ? 'Link copiado!' : 'Copiar link'
+        }
+
+        return {
+          provider: key,
+          name: providerName ?? provider.name,
+          icon: provider.icon,
+          action: () => share(key as SocialProviderType)
+        }
+      })
     ],
-    [share]
+    [share, isCopied]
   )
 
   return {

@@ -19,7 +19,7 @@ export default function PostPage() {
   const slug = router.query.slug as string
   const post = allPosts.find((post) => post.slug === slug)
   const { shareButtons } = useShare({
-    url: slug,
+    url: `http://localhost:3000/blog/${slug}`,
     title: post?.title,
     text: post?.description
   })
