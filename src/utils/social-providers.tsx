@@ -1,4 +1,10 @@
-import { FacebookIcon, LinkedinIcon, SlackIcon, TwitterIcon } from 'lucide-react'
+import {
+  FacebookIcon,
+  LinkedinIcon,
+  LinkIcon,
+  SlackIcon,
+  TwitterIcon
+} from 'lucide-react'
 
 export interface ShareConfig {
   url: string
@@ -44,7 +50,7 @@ export const SOCIAL_PROVIDERS: Record<SocialProviderType, SocialProviderData> = 
   },
   clipboard: {
     name: 'clipboard',
-    icon: '',
+    icon: <LinkIcon />,
     shareUrl: () => ''
   }
 }
