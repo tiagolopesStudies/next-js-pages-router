@@ -1,4 +1,4 @@
-import { allPosts } from 'contentlayer/generated'
+import type { Post } from 'contentlayer/generated'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -15,10 +15,13 @@ import { Button } from '@/components/ui/button'
 import { env } from '@/env'
 import { useShare } from '@/hooks/use-share'
 
-export function Post() {
+interface PostContentProps {
+  post: Post
+}
+
+export function PostContent({ post }: PostContentProps) {
   const router = useRouter()
   const slug = router.query.slug as string
-  const post = allPosts.find((post) => post.slug === slug)
   const { shareButtons } = useShare({
     url: `${env.APP_URL}/blog/${slug}`,
     title: post?.title,
